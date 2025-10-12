@@ -5,3 +5,8 @@ body {
 ul {
     list-style-type: none;
 }
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
