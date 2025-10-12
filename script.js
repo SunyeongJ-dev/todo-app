@@ -20,7 +20,7 @@ taskList.addEventListener("click", function (event) {
     taskList.removeChild(listItem);
   } else if (event.target.classList.contains("edit")) {
     const listItem = event.target.parentElement;
-    listItem.innerHTML = `<input type="checkbox" class="task-checkbox" /><input type="text" id="new-task" placeholder="Edit task..." /><button class="save">Save</button>
+    listItem.innerHTML = `<input type="checkbox" class="task-checkbox" /><input type="text" id="edit-task" placeholder="Edit task..." /><button class="save">Save</button>
         <button class="delete">Delete</button>`;
   } else if (event.target.classList.contains("save")) {
     const listItem = event.target.parentElement;
