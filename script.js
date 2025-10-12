@@ -32,6 +32,14 @@ taskList.addEventListener("click", function (event) {
   }
 });
 
+taskList.addEventListener("dblclick", function (event) {
+  if (event.target.classList.contains("task-item")) {
+    const listItem = event.target;
+    listItem.innerHTML = `<input type="checkbox" class="task-checkbox" /><input type="text" id="edit-task" placeholder="Edit task..." /><button class="save">Save</button>
+        <button class="delete">Delete</button>`;
+  }
+});
+
 taskList.addEventListener("change", function (event) {
   if (event.target.classList.contains("task-checkbox")) {
     const listItem = event.target.parentElement;
