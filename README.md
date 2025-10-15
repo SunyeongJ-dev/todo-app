@@ -16,7 +16,9 @@ A simple Todo List app built with vanilla JavaScript, demonstrating DOM manipula
 - Vanilla JavaScript (ES6+)
 
 ## How It Works
-- Tasks stored in let tasks = [] array of objects { id: number, text: string, completed: boolean }. renderTasks() rebuilds the list on changes using forEach and dataset.id for targeting. Events delegated to taskList for efficiency.
+- Tasks stored in let tasks = [] array of objects { id: number, text: string, completed: boolean }.
+- renderTasks() rebuilds the list on changes using forEach and dataset.id for targeting.
+- Events delegated to taskList for efficiency.
 
 ## Installation & Usage
 1. Clone: git clone [https://github.com/SunyeongJ-dev/todo-app].
