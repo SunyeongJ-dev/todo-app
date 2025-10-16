@@ -1,5 +1,7 @@
 const addButton = document.getElementById("add");
+const taskContainer = document.getElementById("task-container");
 const taskList = document.getElementById("task-list");
+const completedTaskList = document.getElementById("completed-task-list");
 let tasks = []; // Array to hold tasks
 
 // Initial Render
@@ -9,18 +11,22 @@ document.addEventListener("DOMContentLoaded", renderTasks);
 // Render Tasks
 function renderTasks() {
   taskList.innerHTML = "";
+  completedTaskList.innerHTML = "";
   loadTasks();
   tasks.forEach((task) => {
     const listItem = document.createElement("li");
     listItem.className = "task-item";
     listItem.dataset.id = task.id;
-    taskList.appendChild(listItem);
     listItem.innerHTML = `<input type="checkbox" class="task-checkbox" ${
       task.completed ? "checked" : ""
     } /><p class="${task.completed ? "completed" : ""}">${task.text}</p>${
       task.completed ? "" : '<button class="edit">Edit</button>'
+    } <button class="delete">Delete</button>`;
+    if (task.completed) {
+      completedTaskList.appendChild(listItem);
+    } else {
+      taskList.appendChild(listItem);
     }
-          <button class="delete">Delete</button>`;
   });
 }
 
@@ -38,6 +44,7 @@ function loadTasks() {
 }
 
 /* Event Handlers */
+
 // Add Task
 addButton.addEventListener("click", function () {
   const taskInput = document.getElementById("new-task"); // Get input field
@@ -51,7 +58,7 @@ addButton.addEventListener("click", function () {
 });
 
 // Delete, Edit and Save Task
-taskList.addEventListener("click", function (event) {
+taskContainer.addEventListener("click", function (event) {
   const listItem = event.target.parentElement;
   if (event.target.classList.contains("delete")) {
     const taskId = parseInt(listItem.dataset.id);
@@ -80,7 +87,7 @@ taskList.addEventListener("click", function (event) {
 });
 
 // Mark Task as Completed
-taskList.addEventListener("change", function (event) {
+taskContainer.addEventListener("change", function (event) {
   if (event.target.classList.contains("task-checkbox")) {
     const listItem = event.target.parentElement;
     isChecked = event.target.checked;
