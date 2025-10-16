@@ -90,25 +90,15 @@ taskContainer.addEventListener("click", function (event) {
 taskContainer.addEventListener("change", function (event) {
   if (event.target.classList.contains("task-checkbox")) {
     const listItem = event.target.parentElement;
-    isChecked = event.target.checked;
-    if (isChecked) {
-      tasks = tasks.map((task) => {
-        if (task.id === parseInt(listItem.dataset.id)) {
-          task.completed = true;
-        }
-        return task;
-      });
-      saveTasks();
-      renderTasks();
-    } else {
-      tasks = tasks.map((task) => {
-        if (task.id === parseInt(listItem.dataset.id)) {
-          task.completed = false;
-        }
-        return task;
-      });
-      saveTasks();
-      renderTasks();
-    }
+    const taskId = parseInt(listItem.dataset.id);
+    const isChecked = event.target.checked;
+    tasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        task.completed = isChecked;
+      }
+      return task;
+    });
+    saveTasks();
+    renderTasks();
   }
 });
