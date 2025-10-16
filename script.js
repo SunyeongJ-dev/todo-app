@@ -1,17 +1,15 @@
 const addButton = document.getElementById("add");
 const taskList = document.getElementById("task-list");
-let tasks = [
-  { id: Date.now(), text: "Sample Task 1", completed: false },
-  { id: Date.now() + 1, text: "Sample Task 2", completed: false },
-  { id: Date.now() + 2, text: "Sample Task 3", completed: false },
-]; // Array to hold tasks
+let tasks = []; // Array to hold tasks
 
 // Initial Render
 document.addEventListener("DOMContentLoaded", renderTasks);
 
+/* Functions */
 // Render Tasks
 function renderTasks() {
   taskList.innerHTML = "";
+  loadTasks();
   tasks.forEach((task) => {
     const listItem = document.createElement("li");
     listItem.className = "task-item";
@@ -19,21 +17,34 @@ function renderTasks() {
     taskList.appendChild(listItem);
     listItem.innerHTML = `<input type="checkbox" class="task-checkbox" ${
       task.completed ? "checked" : ""
-    } /><p class="${task.completed ? "completed" : ""}">${
-      task.text
-    }</p>${task.completed ? "" : "<button class=\"edit\">Edit</button>"}
+    } /><p class="${task.completed ? "completed" : ""}">${task.text}</p>${
+      task.completed ? "" : '<button class="edit">Edit</button>'
+    }
           <button class="delete">Delete</button>`;
   });
 }
 
-/* Event Handlers */
+// Save Task to Local Storage
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
+// Load Tasks from Local Storage
+function loadTasks() {
+  const storedTasks = localStorage.getItem("tasks");
+  if (storedTasks) {
+    tasks = JSON.parse(storedTasks);
+  }
+}
+
+/* Event Handlers */
 // Add Task
 addButton.addEventListener("click", function () {
   const taskInput = document.getElementById("new-task"); // Get input field
   const taskText = taskInput.value.trim(); // Get and trim input value
   if (taskText !== "") {
     tasks.push({ id: Date.now(), text: taskText, completed: false });
+    saveTasks();
     renderTasks();
     taskInput.value = "";
   }
@@ -45,6 +56,7 @@ taskList.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete")) {
     const taskId = parseInt(listItem.dataset.id);
     tasks = tasks.filter((task) => task.id !== taskId);
+    saveTasks();
     renderTasks();
   } else if (event.target.classList.contains("edit")) {
     const task = listItem.querySelector("p");
@@ -61,17 +73,11 @@ taskList.addEventListener("click", function (event) {
       const taskId = parseInt(listItem.dataset.id);
       const task = tasks.find((t) => t.id === taskId);
       task.text = taskText;
+      saveTasks();
       renderTasks();
     }
   }
 });
-
-// taskList.addEventListener("dblclick", function (event) {
-//   if (event.target.classList.contains("task-item")) {
-//     const listItem = event.target;
-
-//   }
-// });
 
 // Mark Task as Completed
 taskList.addEventListener("change", function (event) {
@@ -85,6 +91,7 @@ taskList.addEventListener("change", function (event) {
         }
         return task;
       });
+      saveTasks();
       renderTasks();
     } else {
       tasks = tasks.map((task) => {
@@ -93,6 +100,7 @@ taskList.addEventListener("change", function (event) {
         }
         return task;
       });
+      saveTasks();
       renderTasks();
     }
   }
