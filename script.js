@@ -114,11 +114,12 @@ taskContainer.addEventListener("click", function (event) {
 
 // Double Click to Edit Task
 taskContainer.addEventListener("dblclick", function (event) {
-  const listItem = event.target.parentElement;
-  const button = listItem.querySelector("button");
-  editTask(listItem);
-  if (button.classList.contains("save")) {
-    saveEditedTask(listItem);
+  if (
+    event.target.tagName === "P" &&
+    !event.target.classList.contains("completed")
+  ) {
+    const listItem = event.target.parentElement;
+    editTask(listItem);
   }
 });
 
