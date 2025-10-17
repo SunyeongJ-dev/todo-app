@@ -10,7 +10,7 @@ h3 {
 
 button {
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border: none;
   border-radius: 16px;
   cursor: pointer;
@@ -21,23 +21,31 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-  block-size: 100vh;
+  gap: 3rem;
+  margin-block-end: 4rem;
+}
+
+.heading-container {
+  margin-block-start: 3rem;
+  inline-size: 100%;
 }
 
 .input-wrapper {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+  inline-size: 70%;
+  max-inline-size: 25rem;
+  margin: auto;
 }
 
 input#new-task {
-  inline-size: 60vw;
   block-size: 2rem;
   padding: 0.5rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 16px;
+  inline-size: 100%;
 }
 
 #task-container {
@@ -45,12 +53,13 @@ input#new-task {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 2rem;
   inline-size: 100%;
+  max-inline-size: 80vw;
 }
 
 .list-wrapper {
   inline-size: 100%;
+  max-inline-size: 25rem;
 }
 
 ul {
@@ -60,7 +69,6 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  inline-size: 100%;
 }
 
 li {
@@ -70,7 +78,7 @@ li {
   justify-content: flex-start;
   gap: 0.5rem;
   margin: 0.5rem 0;
-  inline-size: 80vw;
+  inline-size: 100%;
 }
 
 input[type="checkbox"]:checked::before {
@@ -80,7 +88,7 @@ input[type="checkbox"]:checked::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: white;
 }
 
@@ -88,8 +96,8 @@ input[type="checkbox"] {
   appearance: none;
   border-radius: 50%;
   border: 1px solid #ccc;
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
+  inline-size: 1.2rem;
+  block-size: 1.2rem;
   cursor: pointer;
   position: relative;
   background: #f0f0f0;
@@ -101,19 +109,22 @@ input[type="checkbox"]:checked {
 
 li p {
   margin: 0;
-  margin-inline-start: 0.5rem;
+  margin-inline-start: 0.2rem;
   text-align: start;
   word-break: break-word;
   font-size: 1rem;
 }
 
 li input[type="text"] {
-  inline-size: 90%;
   padding: 0.25rem;
   padding-inline-start: 0.8rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
+}
+
+.list-wrapper:nth-of-type(2) h3 {
+  display: none;
 }
 
 .completed {
@@ -127,27 +138,24 @@ li input[type="text"] {
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
+    gap: 3rem;
   }
-  input#new-task {
-    inline-size: 50vw;
+  .input-wrapper {
+    max-inline-size: 30rem;
   }
-  li {
-    inline-size: 80%;
+  .list-wrapper:nth-of-type(2) h3 {
+    display: block;
   }
 }
 
 @media (min-width: 1024px) {
-  .container {
-    flex-direction: row;
-    gap: 4rem;
-  }
   #task-container {
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2rem;
+    gap: 5rem;
   }
-  input#new-task {
-    inline-size: 20vw;
+  .input-wrapper {
+    max-inline-size: 35rem;
+  }
+  .list-wrapper {
+    max-inline-size: 25rem;
   }
 }
