@@ -17,7 +17,7 @@ function renderTasks() {
     const listItem = document.createElement("li");
     listItem.className = "task-item";
     listItem.dataset.id = task.id;
-    listItem.innerHTML = `<input type="checkbox" id="task-${task.id}" name="task-checkbox" ${
+    listItem.innerHTML = `<input type="checkbox" id="task-${task.id}" class="task-checkbox" ${
       task.completed ? "checked" : ""
     } /><p class="${task.completed ? "completed" : ""}">${task.text}</p>${
       task.completed ? '<span style="visibility: hidden;"></span>' : '<button class="edit">Edit</button>'
