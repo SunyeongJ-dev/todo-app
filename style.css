@@ -1,25 +1,123 @@
 body {
   margin: 0;
+  text-align: center;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  block-size: 100vh;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+input#new-task {
+  inline-size: 60vw;
+  block-size: 2rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+}
+
+#task-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  inline-size: 100%;
+}
+
+.list-wrapper {
+  inline-size: 100%;
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  inline-size: 100%;
 }
 
 li {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 2fr auto auto;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   margin: 0.5rem 0;
+  inline-size: 80vw;
 }
 
-li button {
-  block-size: 2rem;
+input[type="checkbox"]:checked::before {
+  content: '✓'; 
+  position: absolute;
+  inset: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;  
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  background: #f0f0f0;
+}
+
+input[type="checkbox"]:checked {
+  background: #4CAF50;  
+}
+
+li p {
+  margin: 0;
+  margin-inline-start: 0.5rem;
+  text-align: start;
+  word-break: break-word;
+  font-size: 1rem;
+}
+
+li input[type="text"] {
+  inline-size: 90%;
+  padding: 0.25rem;
+  padding-inline-start: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .completed {
   text-decoration: line-through;
   color: gray;
 }
+

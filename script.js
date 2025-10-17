@@ -17,10 +17,10 @@ function renderTasks() {
     const listItem = document.createElement("li");
     listItem.className = "task-item";
     listItem.dataset.id = task.id;
-    listItem.innerHTML = `<input type="checkbox" class="task-checkbox" ${
+    listItem.innerHTML = `<input type="checkbox" id="task-${task.id}" name="task-checkbox" ${
       task.completed ? "checked" : ""
     } /><p class="${task.completed ? "completed" : ""}">${task.text}</p>${
-      task.completed ? "" : '<button class="edit">Edit</button>'
+      task.completed ? '<span style="visibility: hidden;"></span>' : '<button class="edit">Edit</button>'
     } <button class="delete">Delete</button>`;
     if (task.completed) {
       completedTaskList.appendChild(listItem);
