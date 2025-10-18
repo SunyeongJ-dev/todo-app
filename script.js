@@ -2,6 +2,8 @@ const addButton = document.getElementById("add");
 const taskContainer = document.getElementById("task-container");
 const taskList = document.getElementById("task-list");
 const completedTaskList = document.getElementById("completed-task-list");
+const clearTodoButton = document.getElementById("clear-todos");
+const clearCompletedButton = document.getElementById("clear-completed");
 let tasks = []; // Array to hold tasks
 
 // Initial Render
@@ -45,6 +47,20 @@ function loadTasks() {
   if (storedTasks) {
     tasks = JSON.parse(storedTasks);
   }
+}
+
+// Clear All To-Do Tasks
+function clearTodoTasks() {
+  tasks = tasks.filter((task) => task.completed);
+  saveTasks();
+  renderTasks();
+}
+
+// Clear All Completed Tasks
+function clearCompletedTasks() {
+  tasks = tasks.filter((task) => !task.completed);
+  saveTasks();
+  renderTasks();
 }
 
 // Edit Task
@@ -138,4 +154,17 @@ taskContainer.addEventListener("change", function (event) {
     saveTasks();
     renderTasks();
   }
+});
+
+clearTodoButton.addEventListener("click", () => {
+  const completedHeader = document.getElementById("completed-header");
+  clearTodoTasks();
+  if (completedHeader.style.display === "none") {
+    clearCompletedTasks();
+  }
+  renderTasks();
+});
+clearCompletedButton.addEventListener("click", () => {
+  clearCompletedTasks();
+  renderTasks();
 });

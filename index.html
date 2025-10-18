@@ -17,13 +17,19 @@
       </div>
       <div id="task-container">
         <div class="list-wrapper">
-          <h3>To-Do</h3>
+          <div class="list-header">
+            <h3>To-Do</h3>
+            <button id="clear-todos">Clear All</button>
+          </div>
           <ul id="task-list">
             <!-- Tasks will be dynamically added here -->
           </ul>
         </div>
         <div class="list-wrapper">
-          <h3>Completed</h3>
+          <div id="completed-header" class="list-header">
+            <h3>Completed</h3>
+            <button id="clear-completed">Clear All</button>
+          </div>
           <ul id="completed-task-list">
             <!-- Completed tasks go here -->
           </ul>
