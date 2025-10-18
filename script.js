@@ -9,6 +9,10 @@ let tasks = []; // Array to hold tasks
 // Initial Render
 document.addEventListener("DOMContentLoaded", renderTasks);
 
+function isMobileView() {
+  return window.matchMedia("(max-width: 767px)").matches;
+}
+
 /* Functions */
 // Render Tasks
 function renderTasks() {
@@ -157,10 +161,11 @@ taskContainer.addEventListener("change", function (event) {
 });
 
 clearTodoButton.addEventListener("click", () => {
-  const completedHeader = document.getElementById("completed-header");
-  clearTodoTasks();
-  if (completedHeader.style.display === "none") {
-    clearCompletedTasks();
+  if (isMobileView()) {
+    tasks = [];
+    saveTasks();
+  } else {
+    clearTodoTasks();
   }
   renderTasks();
 });
