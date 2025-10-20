@@ -53,6 +53,14 @@ function loadTasks() {
   }
 }
 
+// Check if Task List is Empty
+function isTodoListEmpty() {
+  return tasks.filter((task) => !task.completed).length === 0;
+}
+function isCompletedListEmpty() {
+  return tasks.filter((task) => task.completed).length === 0;
+}
+
 // Clear All To-Do Tasks
 function clearTodoTasks() {
   tasks = tasks.filter((task) => task.completed);
@@ -160,16 +168,47 @@ taskContainer.addEventListener("change", function (event) {
   }
 });
 
+// Clear All To-Do and Completed Tasks
 clearTodoButton.addEventListener("click", () => {
+  let text = "";
   if (isMobileView()) {
-    tasks = [];
-    saveTasks();
+    if (isTodoListEmpty() && isCompletedListEmpty()) {
+      return;
+    } else {
+      text = "Clear all tasks?";
+      if (!confirm(text)) {
+        return;
+      } else {
+        tasks = [];
+        saveTasks();
+        renderTasks();
+      }
+    }
   } else {
-    clearTodoTasks();
+    if (isTodoListEmpty()) {
+      return;
+    } else {
+      text = "Clear all to-do tasks?";
+      if (!confirm(text)) {
+        return;
+      } else {
+        clearTodoTasks();
+        renderTasks();
+      }
+    }
   }
-  renderTasks();
 });
+
 clearCompletedButton.addEventListener("click", () => {
-  clearCompletedTasks();
-  renderTasks();
+  text = "Clear all completed tasks?";
+  if (isCompletedListEmpty()) {
+    return;
+  } else {
+    if (!confirm(text)) {
+      return;
+    } else {
+      clearCompletedTasks();
+      renderTasks();
+    }
+  }
 });
