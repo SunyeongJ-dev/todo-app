@@ -135,10 +135,16 @@ addButton.addEventListener("click", function () {
   const taskInput = document.getElementById("new-task"); // Get input field
   const taskText = taskInput.value.trim(); // Get and trim input value
   if (taskText !== "") {
-    tasks.push({ id: Date.now(), text: taskText, completed: false });
+    const newTask = { id: Date.now(), text: taskText, completed: false };
+    tasks.push(newTask);
     saveTasks();
-    renderTasks();
     taskInput.value = "";
+
+    const listItem = document.createElement("li");
+    listItem.className = "task-item fade-in";
+    listItem.dataset.id = newTask.id;
+    listItem.innerHTML = `<input type="checkbox" id="task-${newTask.id}" class="task-checkbox" /><p>${newTask.text}</p><button class="edit">Edit</button> <button class="delete">Delete</button>`;
+    taskList.appendChild(listItem);
   }
 });
 
@@ -147,9 +153,12 @@ taskContainer.addEventListener("click", function (event) {
   const listItem = event.target.parentElement;
   if (event.target.classList.contains("delete")) {
     const taskId = parseInt(listItem.dataset.id);
-    tasks = tasks.filter((task) => task.id !== taskId);
-    saveTasks();
-    renderTasks();
+    listItem.classList.add("fade-out");
+    setTimeout(() => {
+      tasks = tasks.filter((task) => task.id !== taskId);
+      saveTasks();
+      renderTasks();
+    }, 290);
   } else if (event.target.classList.contains("edit")) {
     editTask(listItem);
   } else if (event.target.classList.contains("save")) {
