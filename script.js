@@ -75,6 +75,23 @@ function clearCompletedTasks() {
   renderTasks();
 }
 
+// Confirm and Clear Tasks
+function confirmAndClear(type) {
+  let emptyCheck, confirmText, clearFunction;
+  if (type === "todo") {
+    emptyCheck = isTodoListEmpty();
+    confirmText = "Clear all to-do tasks?";
+    clearFunction = clearTodoTasks;
+  } else if (type === "completed") {
+    emptyCheck = isCompletedListEmpty();
+    confirmText = "Clear all completed tasks?";
+    clearFunction = clearCompletedTasks;
+  }
+  if (emptyCheck) return;
+  if (!confirm(confirmText)) return;
+  clearFunction();
+}
+
 // Edit Task
 function editTask(listItem) {
   const task = listItem.querySelector("p");
@@ -170,45 +187,18 @@ taskContainer.addEventListener("change", function (event) {
 
 // Clear All To-Do and Completed Tasks
 clearTodoButton.addEventListener("click", () => {
-  let text = "";
   if (isMobileView()) {
-    if (isTodoListEmpty() && isCompletedListEmpty()) {
-      return;
-    } else {
-      text = "Clear all tasks?";
-      if (!confirm(text)) {
-        return;
-      } else {
-        tasks = [];
-        saveTasks();
-        renderTasks();
-      }
-    }
+    if (isTodoListEmpty() && isCompletedListEmpty()) return;
+    if (!confirm("Clear all tasks?")) return;
+    tasks = [];
+    saveTasks();
+    renderTasks();
   } else {
-    if (isTodoListEmpty()) {
-      return;
-    } else {
-      text = "Clear all to-do tasks?";
-      if (!confirm(text)) {
-        return;
-      } else {
-        clearTodoTasks();
-        renderTasks();
-      }
-    }
+    confirmAndClear("todo");
   }
 });
 
 clearCompletedButton.addEventListener("click", () => {
-  text = "Clear all completed tasks?";
-  if (isCompletedListEmpty()) {
-    return;
-  } else {
-    if (!confirm(text)) {
-      return;
-    } else {
-      clearCompletedTasks();
-      renderTasks();
-    }
-  }
+  if (isMobileView()) return;
+  confirmAndClear("completed");
 });
