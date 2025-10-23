@@ -81,7 +81,7 @@ function confirmAndClear(type) {
   let emptyCheck, confirmText, clearFunction;
   if (type === "todo") {
     emptyCheck = isTodoListEmpty();
-    confirmText = "Clear all to-do tasks?";
+    confirmText = "Clear all active tasks?";
     clearFunction = clearTodoTasks;
   } else if (type === "completed") {
     emptyCheck = isCompletedListEmpty();

@@ -17,12 +17,13 @@
   --shadow: rgba(74, 124, 89, 0.1);
 }
 
+/* Mobile-first base styles */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
   background: linear-gradient(135deg, #4a7c59 0%, #6b9d7a 50%, #8bb896 100%);
   min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: 1rem 0.5rem;
   color: var(--text-primary);
   transition: background 0.3s ease;
 }
@@ -41,7 +42,7 @@ body {
 
 .header h1 {
   color: white;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -54,7 +55,7 @@ body {
 
 .input-section {
   background: var(--bg-secondary);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 20px;
   box-shadow: 0 10px 30px var(--shadow);
   margin-bottom: 2rem;
@@ -63,6 +64,7 @@ body {
 
 .input-wrapper {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -136,10 +138,6 @@ body {
   transition: all 0.3s ease;
 }
 
-.list-wrapper:hover {
-  box-shadow: 0 15px 40px var(--shadow);
-}
-
 .list-header {
   display: flex;
   justify-content: space-between;
@@ -161,6 +159,10 @@ body {
 .list-header h3::before {
   content: "📝";
   font-size: 1.3rem;
+}
+
+.list-wrapper:nth-of-type(2) .list-header {
+  display: none;
 }
 
 .list-wrapper:nth-of-type(2) .list-header h3::before {
@@ -352,7 +354,24 @@ ul {
   }
 }
 
+/* Tablet and Desktop styles (768px and up) */
 @media (min-width: 768px) {
+  body {
+    padding: 2rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 4rem;
+  }
+
+  .input-section {
+    padding: 2rem;
+  }
+
+  .input-wrapper {
+    flex-direction: row;
+  }
+
   #task-container {
     background-color: inherit;
     grid-template-columns: 1fr 1fr;
@@ -366,33 +385,11 @@ ul {
     padding: 2rem;
   }
 
+  .list-wrapper:hover {
+    box-shadow: 0 15px 40px var(--shadow);
+  }
+
   .list-wrapper:nth-of-type(2) .list-header {
     display: flex;
-  }
-
-  .header h1 {
-    font-size: 4rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .list-wrapper:nth-of-type(2) .list-header {
-    display: none;
-  }
-
-  body {
-    padding: 1rem 0.5rem;
-  }
-
-  .header h1 {
-    font-size: 2rem;
-  }
-
-  .input-section {
-    padding: 1.5rem;
-  }
-
-  .input-wrapper {
-    flex-direction: column;
   }
 }
