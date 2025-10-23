@@ -4,6 +4,7 @@ const taskList = document.getElementById("task-list");
 const completedTaskList = document.getElementById("completed-task-list");
 const clearTodoButton = document.getElementById("clear-todos");
 const clearCompletedButton = document.getElementById("clear-completed");
+const taskFilter = document.getElementById("task-filter");
 let tasks = []; // Array to hold tasks
 
 // Initial Render
@@ -210,4 +211,18 @@ clearTodoButton.addEventListener("click", () => {
 clearCompletedButton.addEventListener("click", () => {
   if (isMobileView()) return;
   confirmAndClear("completed");
+});
+
+// Filter Tasks
+taskFilter.addEventListener("input", function () {
+  const filterText = taskFilter.value.toLowerCase();
+  const taskItems = document.querySelectorAll(".task-item");
+  taskItems.forEach((item) => {
+    const taskText = item.querySelector("p").textContent.toLowerCase();
+    if (taskText.includes(filterText)) {
+      item.style.display = "grid";
+    } else {
+      item.style.display = "none";
+    }
+  });
 });
