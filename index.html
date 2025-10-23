@@ -4,32 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>To-Do List</title>
+    <title>My Tasks</title>
   </head>
   <body>
     <div class="container">
-      <div class="heading-container">
-        <h1>To-Do List</h1>
-        <div class="input-wrapper">
-          <input type="text" id="new-task" placeholder=" Add a new task..." />
-          <button id="add">Add</button>
-        </div>
+      <div class="header">
+        <h1>✨ My Tasks</h1>
       </div>
-      <input type="search" placeholder="Type here to filter the task" id="task-filter" />
+
+      <div class="input-section">
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="new-task"
+            placeholder="What needs to be done?"
+          />
+          <button id="add">Add Task</button>
+        </div>
+        <input
+          type="search"
+          placeholder="🔍 Search tasks..."
+          id="task-filter"
+        />
+      </div>
+
       <div id="task-container">
         <div class="list-wrapper">
           <div class="list-header">
-            <h3>To-Do</h3>
-            <button id="clear-todos">Clear All</button>
+            <h3>Tasks</h3>
+            <button class="clear-btn" id="clear-todos">Clear All</button>
           </div>
           <ul id="task-list">
             <!-- Tasks will be dynamically added here -->
           </ul>
         </div>
         <div class="list-wrapper">
-          <div id="completed-header" class="list-header">
+          <div class="list-header" id="completed-header">
             <h3>Completed</h3>
-            <button id="clear-completed">Clear All</button>
+            <button class="clear-btn" id="clear-completed">Clear All</button>
           </div>
           <ul id="completed-task-list">
             <!-- Completed tasks go here -->

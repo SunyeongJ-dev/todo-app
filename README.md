@@ -1,7 +1,7 @@
 # Todo List App
 
 ## Overview
-A simple Todo List app built with vanilla JavaScript that demonstrates DOM manipulation, event delegation, and array-based state management. Users can add, edit, delete, and mark tasks as completed, with data persisted in LocalStorage.
+A simple Todo List app built with vanilla JavaScript that demonstrates DOM manipulation, event delegation, and array-based state management. Users can add, edit, delete, and mark tasks as completed, with data persisted in LocalStorage. The modern design was created with assistance from Claude AI.
 
 ## Key Features
 - Add tasks using the input field and button
@@ -30,3 +30,6 @@ A simple Todo List app built with vanilla JavaScript that demonstrates DOM manip
 
 ## Licence
 MIT
+
+---
+*Design created with assistance from Claude AI*
