@@ -10,6 +10,7 @@ A simple Todo List app built with vanilla JavaScript that demonstrates DOM manip
 - Toggle task completion with a checkbox – applies strikethrough styling
 - Dynamic re-rendering keeps the UI synchronized with data
 - Task data persists across browser sessions using LocalStorage
+- Filter tasks in real-time: Type in the search field to hide/show tasks based on text matching (client-side, no server needed)
 
 ## Tech Stack
 - HTML5
@@ -20,6 +21,7 @@ A simple Todo List app built with vanilla JavaScript that demonstrates DOM manip
 - Task data is stored in LocalStorage
 - The `renderTasks()` function rebuilds the task list when changes occur, using `forEach` and `dataset.id` for element targeting
 - Events are delegated to the task list container for improved performance
+- Task filtering uses `addEventListener("input")` on the search field to dynamically show/hide items via `querySelectorAll` and `style.display`, ensuring real-time updates without full re-renders
 
 ## Installation & Usage
 1. Clone the repository: `git clone https://github.com/SunyeongJ-dev/todo-app`
