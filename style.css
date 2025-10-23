@@ -40,13 +40,27 @@ button {
 }
 
 input#new-task {
-  block-size: 2rem;
+  block-size: 1.6rem;
   padding: 0.5rem;
   padding-inline-start: 0.8rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 16px;
   inline-size: 100%;
+}
+
+#task-filter {
+  block-size: 2rem; 
+  padding: 0.5rem;  
+  padding-inline-start: 0.8rem;  
+  font-size: 1rem;   
+  border: 1px solid #ccc; 
+  border-radius: 12px;  
+  inline-size: 70%; 
+  max-inline-size: 25rem;
+  margin-block-end: 1rem;  
+  box-sizing: border-box;  
+  margin: 0 auto;
 }
 
 #task-container {
