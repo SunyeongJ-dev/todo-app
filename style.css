@@ -34,7 +34,7 @@ body {
 
 .header {
   text-align: center;
-  margin-top: 0.6rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
   animation: fadeInDown 0.6s ease;
 }
@@ -130,9 +130,9 @@ body {
 }
 
 .list-wrapper {
-  background: var(--bg-secondary);
+  background: transparent;
+  box-shadow: none;
   border-radius: 20px;
-  box-shadow: 0 10px 30px var(--shadow);
   transition: all 0.3s ease;
 }
 
@@ -361,6 +361,8 @@ ul {
   }
 
   .list-wrapper {
+    background: var(--bg-secondary);
+    box-shadow: 0 10px 30px var(--shadow);
     padding: 2rem;
   }
 
